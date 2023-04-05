@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cart</title>
+    <style>
+        /* Internal CSS stylesheet */
+        h1{
+          color: white;
+        }
+        .pcart{
+          margin:20px auto;
+          margin-left: 100px;
+          margin-right: 100px;
+        }
+        table{
+          width:100%;
+          border-collapse: collapse;
+          background-color: #fff;
+        }
+        .c1{
+          display:flex;
+          flex-wrap:wrap;
+        }
+        th{
+          text-align:left;
+          padding:5px;
+          color:#fff;
+          background:#ff523b;
+          font-weight:normal;
+        }
+        td{
+          padding: 10px 5px;
+          width: 30px;
+        }
+        .total{
+          display:flex;
+          justify-content:flex-end;
+        }
+        .total table{
+          border-top:3px solid #ff523b;
+          width: 100%;
+          max-width: 350px;
+        }
+        img{
+          height: 90px;
+        }
+        
+      </style>
+  </head>
+  <body>
+    <%- include('navbar') -%>
+
+<h1 align="center">Your Cart</h1>
+    <div class="pcart">
+        
+        <table>
+            
+            <tr>
+                <th>Sno.</th>    
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            <% results.forEach((result)=>{ %>
+            <tr>
+                <td><%=result.p_id%></td>
+                <td>
+                    <div class="c1"><img src="https://www.devgadmango.com/wp-content/uploads/2019/11/orignal-mango.png">
+                    <div>
+                        <a href="details/<%=result.id%>"><h3><%=result.p_name%></h3></a>
+                        <span ><b>Price:Rs. <%=result.p_price%></b></span>
+                    </div>
+                    </div>
+                </td>
+                <td><input id="quantity" placeholder="Enter Quantity" type=number min=1 max=20 value="1">
+                    <input type="button" class="btn btn-primary" onclick="increment()" value="+">
+                    <input type="button" class="btn btn-primary" onclick="decrement()" value="-"></td>
+                <td>Rs.<span id="subtotal"><%=result.p_price%></span></td>
+            </tr>
+            <%})%>
+        </table>
+        <div class="total">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>Rs.170</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>Rs.35</td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td>-Rs.15</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>Rs.190</td>
+                </tr>
+                <tr>
+                <td><input type="button" class="btn btn-primary" onclick="" style="margin-left: 40px;" value="Proceed"></td>
+              </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function increment() {
+          document.getElementById('quantity').stepUp();
+        }
+        function decrement() {
+          document.getElementById('quantity').stepDown();
+        }
+        // update subtotal when quantity changes
+        const quantityInput = document.getElementById('quantity');
+        const subtotal = document.getElementById('subtotal');
+        const price2 = document.getElementById('pprice');
+        quantityInput.addEventListener('input', () => {
+          const quantity1 = parseInt(quantityInput.value);
+          const total = price2 * quantity1;
+          subtotal.textContent = total.toFixed(2);
+        });
+    </script>
+  </body>
+</html>

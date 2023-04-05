@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/6ec9c7cfba.js" crossorigin="anonymous"></script>  
+
+		<style>
+		body {
+        font-size: 20px;
+		background-image: url("https://images.news18.com/ibnlive/uploads/2022/07/mango-16583304614x3.jpg");
+    }  
+		.abcd {
+			max-width: 500px;
+			height:400px;
+			margin-left: 150px;
+			margin-top: 50px;
+			margin-bottom: 90px;
+			padding: 30px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+			font-size: 13px;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 30px;
+		}
+
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		.cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+
+		.imgabcd {
+			position: relative;
+		}
+
+		img.avatar {
+			width: 100%;
+			border-radius: 50%;
+		}
+
+		.abcd > p {
+			text-align: center;
+		}
+
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+
+		/*About section*/
+
+.about{
+	padding:20px 0px;
+}
+
+.about .content{ 
+ -webkit-display: flex;
+ display: flex;
+}
+.about .content .box{
+	flex:0 0 33.33%;
+	max-width: 33.33%;
+	padding:15px;
+}
+.about .content .box .inner{
+	background-color:#222222;
+}
+.about .content .box:nth-child(2) .inner{
+	background-color: #74B72E;
+}
+.about .content .box .inner .img img{
+	width: 100%;
+}
+.about .content .box .inner .text{
+	padding:30px;
+}
+
+.about .content .box .inner .text h4{
+  font-size: 20px;
+  margin:0;
+  padding: 0px 0px 15px;
+  font-weight: 500;
+  color:#ffffff;
+ text-transform: capitalize;
+  text-align: center;
+}
+.about .content .box .inner .text p{
+	font-size: 15px;
+	line-height:20px;
+	color:#ffffff;
+	text-align: center;
+	margin:0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*Contact Section*/
+
+.contact{
+	padding:80px 0px;
+}
+
+.contact .content{
+	background-color: #222222;
+	-webkit-display: flex;
+	display: flex;
+}
+
+.contact .content .box{
+	flex:0 0 50%;
+	max-width: 50%;
+	padding: 15px;
+}
+
+.contact .content .form input,
+.contact .content .form textarea{
+ height: 45px;
+ width: 100%;
+ padding:6px 12px;
+ margin-bottom: 25px;
+ background-color: transparent;
+ border:1px solid #ffffff;
+ font-family: 'Open-sans',sans-serif;
+ color:#ffffff;
+}
+.contact .content .form input:focus,
+.contact .content .form textarea:focus{
+ outline: none;
+}
+.contact .content .form input::placeholder,
+.contact .content .form textarea::placeholder{
+	color:#ffffff;
+}
+.contact .content .form textarea{
+	height: 100px;
+}
+
+.contact .content .form button{
+	border-radius:25%;
+	outline: none;
+	box-shadow: none;
+	height: 45px;
+	padding:0px 50px;
+	border:1px solid transparent;
+	background-color: #AEF359;
+	color:#ffffff;
+	font-size: 15px;
+	transition: all .5s ease;
+	cursor: pointer;
+}
+.contact .content .form button:hover{
+	background-color:transparent;
+	color:#ffffff; 
+    border-color:#ffffff;
+}
+
+.contact .content .text h2{
+	font-size: 30px;
+    font-weight: 500;
+    color: #AEF359;
+    padding: 0px 0px 20px;
+}
+.contact .content .text p{
+    font-size: 15px;
+    line-height: 20px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0px 0px 30px;
+    font-family: 'Open-sans', sans-serif;
+}
+
+.contact .content .text .info ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+.contact .content .text .info li{
+	display: block;
+	margin-bottom: 15px;
+	color:#ffffff;
+	font-size: 15px;
+	letter-spacing: 1px;
+	position: relative;
+	padding-left: 40px;
+	font-family: 'Open-Sans',sans-serif;
+}
+.contact .content .text .info li span{
+	display: inline-block;
+	position: absolute;
+	left:0px;
+	top:0px;
+	font-size: 20px;
+	color:#AEF359;
+}
+.contact .content .text .social {
+	padding-top: 30px;
+}
+.contact .content .text .social a{
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #AEF359;
+    text-decoration: none;	
+    display: inline-block;
+    margin-right: 10px;
+    transition: all .5s ease;
+    border:1px solid transparent;
+} 
+
+.contact .content .text .social a:hover{
+	background-color: transparent;
+    border-color: #ffffff;
+}
+
+.contact .content .text .social a span{
+	color:#ffffff;
+	font-size: 20px;
+}
+
+.contact .content .text .copy{
+	border-top:1px solid #333333;
+	margin-top: 30px;
+	padding-top: 20px;
+	color:#c5c5c5;
+	font-size: 15px;
+}
+.c2{
+	width:40px;
+	text-align: center;
+}
+	</style>
+</head>
+<body>
+	<%- include('navbar2') -%>
+	<tr>
+	
+<div class="log">	
+	<div class="abcd">
+		<h1>LOGIN</h1>
+		<!-- <div class="imgabcd"> -->
+			<!-- <img src="avatar.png" alt="Avatar" class="avatar"> -->
+		<!-- </div> -->
+		<form class="" action="/auth" method="post">
+
+
+		<label for="uname"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="uname" required>
+
+		<label for="psw"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="passwd" required>
+
+		<button type="submit">Login</button>
+		
+		
+		<!-- <label>
+			<input type="checkbox" checked="checked" name="remember"> Remember me
+		</label> -->
+
+		</form>
+		<p>Don't have an account? <a href="#">Sign up</a></p>
+		<span class="psw">Forgot <a href="#">password?</a></span>
+		
+	</div>
+
+</div>
+	<div>
+		<h1>ABOUT US</h1>
+		<!-- Start About -->
+		<section class="about" id="about">
+			<div class="content">
+				 <div class="box">
+					  <div class="inner">
+						   <div class="img">
+							   <img src="https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000" alt="about" height=300px/>
+						   </div>
+						 <div class="text">
+			   <marquee direction="up">
+							  <h4> DISCOUNT </h4>
+							  <p>"You can get huge discount on festivals"</p>
+			  </marquee>
+						 </div>
+					  </div>
+				 </div>
+				   <div class="box">
+					  <div class="inner">
+						   <div class="img">
+							   <img src="https://media.istockphoto.com/id/1204502523/vector/fast-delivery-icon-design-element-vector-truck-and-timer-illustration-speed-shipping-concept.jpg?s=170667a&w=0&k=20&c=Zy8tRpd83blYtB9SWOB52GSay9Ych6qnhe62_-43o2w=" alt="about" height=300px/>
+						   </div>
+						 <div class="text">
+			   <marquee direction="up">
+							  <h4> FASTEST DELIVERY  </h4>
+						   <p> "Get your products to your doorstep within short time"</p>
+			  </marquee>
+						 </div>
+					  </div>
+				 </div>
+				 <div class="box">
+					  <div class="inner">
+						   <div class="img">
+							   <img src="https://media.istockphoto.com/id/1315395739/de/vektor/kaufen-sie-one-get-one-free-sign-numbers-circular-modern.jpg?s=612x612&w=0&k=20&c=A53S0EBsDMM-l5im1pNRM5rm_5lkOn1KBYbENdKD90k=" alt="about" height=300px/>
+						   </div>
+						 <div class="text">
+			   <marquee direction="up">
+							  <h4> OFFER </h4>
+						  <p>"Buy one get one free"</p>
+			  </marquee>
+						 </div>
+					  </div>
+				 </div>
+			</div>
+		</section>
+		<!-- End About -->
+	</div>
+	<section class="contact" id="contact">
+		<div class="content">
+			<div class="box form wow slideInLeft">
+			   <form>
+				  <input type="text" placeholder="Enter Your Name">
+				  <input type="text" placeholder="Enter Your Email">
+				  <input type="text" placeholder="Enter Your Mobile Number">
+				  <textarea placeholder="Enter Your Reviews"></textarea>
+				  <button type="submit" class="c2">Send</button>
+			   </form>
+			</div>
+			<div class="box text wow slideInRight">
+				 <h2>Stay connected</h2>
+				  <div class="info">
+					  <ul>
+						  <li><span class="fa fa-map-marker"></span> Plot No.1234,St. no.2,abc Nagar, New Delhi.</li>
+						  <li><span class="fa fa-phone"></span> 91 99XXXXXXXX</li>
+						  <li><span class="fa fa-envelope"></span> GlitzMango@shopping.com</li>
+					  </ul>
+				  </div>
+				  <div class="social">
+					   <a href=""><span class="fa fa-facebook"></span></a>
+					   <a href=""><span class="fa fa-linkedin"></span></a>
+					   <a href=""><span class="fa fa-skype"></span></a>
+					   <a href=""><span class="fa fa-youtube-play"></span></a>
+				  </div>
+  
+  
+			</div>
+	 </div>
+  </section>
+</body>
+</html>

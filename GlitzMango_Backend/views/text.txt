@@ -1,0 +1,93 @@
+<div class="product">
+  <h2><%= product.name %></h2>
+  <p><%= product.description %></p>
+  <p>Price: <%= product.price %></p>
+
+  <form action="/cart" method="POST">
+    <input type="hidden" name="product_id" value="<%= product.id %>">
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" value="1" min="1">
+    <input type="submit" value="Add to Cart">
+  </form>
+</div>
+
+const express = require('express');
+const session = require('express-session');
+const app = express();
+
+// Use sessions to store cart data
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+
+// Handle POST request to add item to cart
+app.post('/cart', (req, res) => {
+  const { product_id, quantity } = req.body;
+  const product = getProductById(product_id);
+  const cartItem = {
+    id: product_id,
+    name: product.name,
+    price: product.price,
+    quantity: quantity,
+    total: product.price * quantity
+  };
+
+  // Store cart item in session
+  if (!req.session.cart) {
+    req.session.cart = [cartItem];
+  } else {
+    req.session.cart.push(cartItem);
+  }
+
+  res.redirect('/cart');
+});
+
+// Display cart items and total
+app.get('/cart', (req, res) => {
+  const cart = req.session.cart || [];
+  const totalPrice = cart.reduce((total, item) => total + item.total, 0);
+
+  res.render('cart.ejs', { cart, totalPrice });
+});
+
+
+
+<!-- Product details section -->
+<h2><%= product.name %></h2>
+<p>Price: <%= product.price %></p>
+<form method="POST" action="/cart/add">
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" name="quantity" value="1">
+  <input type="hidden" id="productId" name="productId" value="<%= product._id %>">
+  <input type="submit" value="Add to Cart">
+</form>
+
+<!-- Cart section -->
+<h2>Cart</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart.items.forEach(function(item) { %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price * item.quantity %></td>
+      </tr>
+    <% }); %>
+    <tr>
+      <td colspan="3"><strong>Total:</strong></td>
+      <td><%= cart.total %></td>
+    </tr>
+  </tbody>
+</table>
